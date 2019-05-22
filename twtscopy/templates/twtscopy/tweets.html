@@ -1,0 +1,31 @@
+{% extends 'twtscopy/base.html' %}
+
+{% load hkfilter %}
+
+{% block title  %}
+   HashTags
+{% endblock %}
+
+{% block container %}
+
+
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="header">
+                  <h4 class="title">Tweets</h4>
+                  <p class="category">tweet tweet tweet</p>
+              </div>
+              <div class="content">
+                <div class="row">
+                  {% for tweet in tweets %}
+                      <div style="margin:5px;background:yellow;" class="well col col-sm-5 ">{{tweet}}</div>
+                  {% endfor %}
+                </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'twtscopy/base.html' %}
+
+
+{% load hkfilter %}
+
+
+{% block title  %}
+   HashTags
+{% endblock %}
+
+{% block container %}
+
+
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="header">
+                  <h4 class="title">HashTags</h4>
+                  <p class="category">tag tag tag</p>
+              </div>
+              <div class="content">
+                {% for tag,frq in topHashtags %}
+                    <h4 style="display: inline;"><span class="label label-{{0|randomColor}}">{{tag}}:{{frq}}</span></h4>
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+{% endblock %}

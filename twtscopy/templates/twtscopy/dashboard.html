@@ -1,0 +1,66 @@
+{% extends 'twtscopy/base.html' %}
+
+{% load hkfilter %}
+
+{% block title  %}
+   Dashboard
+{% endblock %}
+
+{% block container %}
+
+
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="header">
+                  <h4 class="title">5G Statics</h4>
+                  <p class="category">what the world talk about 5G</p>
+              </div>
+              <div class="content">
+                {% for tag,frq in texts %}
+                    <h4 style="display: inline;"><span class="label label-{{0|randomColor}}">{{tag}}:{{frq}}</span></h4>
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+  <!-- <div class="row">
+      <div class="panel-group">
+        <div class="panel panel-success">
+          <div class="panel-heading">Panel Heading</div>
+          <div class="panel-body">Panel Content</div>
+        </div>
+
+        <div class="panel panel-info">
+           <div class="panel-heading">Panel Heading</div>
+           <div class="panel-body">Panel Content</div>
+        </div>
+
+      </div>
+  </div> -->
+
+{% endblock %}
+
+
+{% block javascript %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        demo.initChartist();
+
+        $.notify({
+            icon: 'pe-7s-gift',
+            message: "Welcome to <b>Scopy</b> - You can watch your social socity here."
+
+          },{
+              type: 'info',
+              timer: 4000
+          });
+
+    });
+</script>
+
+{% endblock %}
