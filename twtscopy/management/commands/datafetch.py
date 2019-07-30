@@ -70,6 +70,10 @@ class Command(BaseCommand):
             for twt in data:
                 tweet = Tweets(id = make_id(),text=twt._json["full_text"],city=city,searchKey=q)
                 tweet._json = json.dumps(twt._json)
+                tweet.tweet_id = twt._json["id"]
+                tweet.user_id = twt._json.get("user",{}).get("id")
+                tweet.user_name = twt._json.get("user",{}).get("name")
+                tweet.user_image = twt._json.get("user",{}).get("profile_image_url")
                 tweet.save()
                 print(city,"-->",tweet.text)
                 time.sleep(2)

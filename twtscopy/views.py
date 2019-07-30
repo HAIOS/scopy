@@ -49,7 +49,7 @@ class HaikusView:
 
         cities = City.objects.all()
 
-        tweets = Tweets.objects.filter(**kargs)[start:end]
+        tweets = Tweets.objects.filter(**kargs).order_by("-time")[start:end]
 
         data = {'nav':'tweets',"cities":cities,'tweets':tweets}
 

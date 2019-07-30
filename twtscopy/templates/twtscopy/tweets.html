@@ -3,7 +3,7 @@
 {% load hkfilter %}
 
 {% block title  %}
-   HashTags
+   Tweets
 {% endblock %}
 
 {% block container %}
@@ -19,7 +19,12 @@
               <div class="content">
                 <div class="row">
                   {% for tweet in tweets %}
-                      <div style="margin:5px;background:yellow;" class="well col col-sm-5 ">{{tweet}}</div>
+                      <div style="margin:5px;background:yellow;" class="well col col-sm-5 ">
+                        <h4>  <img src="{{tweet.user_image}}"> {{tweet.user_name}}</h4>
+                        <p>
+                            {{tweet.text}}
+                        </p>
+                      </div>
                   {% endfor %}
                 </div>
               </div>

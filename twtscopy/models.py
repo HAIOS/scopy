@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from django.core.validators import URLValidator
 
 class City(models.Model):
     id = models.AutoField(primary_key=True)
@@ -18,8 +18,12 @@ class City(models.Model):
 
 class Tweets(models.Model):
     id = models.IntegerField(primary_key=True)
+    tweet_id = models.IntegerField(default=0)
+    user_id = models.IntegerField(default=0)
+    user_name = models.CharField(max_length=255,default="",blank=True)
+    user_image = models.TextField(validators=[URLValidator()],default="",blank=True)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
-    text = models.TextField()
+    text = models.TextField(default="")
     time = models.DateTimeField(default=timezone.now)
     searchKey = models.CharField(max_length=255,default="",blank=True)
     _json = models.TextField(default="{}")

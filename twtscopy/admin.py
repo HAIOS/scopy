@@ -1,6 +1,6 @@
 from django.contrib import admin
 from twtscopy.models import Tweets,City,HashTags
-
+from django.utils.safestring import mark_safe
 
 class AdminCity(admin.ModelAdmin):
     list_display = ['id','name','latitude','longitude','range','time','active','q']
@@ -8,9 +8,13 @@ class AdminCity(admin.ModelAdmin):
 
 
 class AdminTweets(admin.ModelAdmin):
-    list_display = ['city','text','searchKey','time']
+    def image_view(self,obj):
+        return mark_safe('<img src="%s">' % obj.user_image)
+
+    list_display = ['tweet_id','city','text','user_name','image_view','searchKey','time']
     search_fields = ('text',)
     list_filter = ('city','time','searchKey')
+
 
 
 class AdminHashTags(admin.ModelAdmin):
